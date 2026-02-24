@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Propuesta de Trabajo - Automatización PDF a Excel | PICE 2026-10</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <header class="header">
+    <div class="header-content">
+      <div class="header-subtitle">Proyecto Intermedio Consultoría Empresarial (PICE)</div>
+      <h1>Propuesta de Trabajo</h1>
+      <div class="header-subtitle">Automatización del Proceso de Extracción y Consolidación de Datos PDF a Excel</div>
+      <div class="header-meta">
+        <strong>Universidad de los Andes - 2026-10</strong><br>
+        Cliente: [Nombre de la Empresa] | Equipo Consultor: [Integrantes]<br>
+        Manager: [Nombre Manager] | Consultor Asociado: [Nombre Monitor]
+      </div>
+    </div>
+  </header>
+
+  <nav class="nav">
+    <div class="nav-content">
+      <div><strong>PICE 2026-10</strong></div>
+      <ul class="nav-links">
+        <li><a href="#resumen">Resumen</a></li>
+        <li><a href="#estado">Estado Actual</a></li>
+        <li><a href="#stakeholders">Stakeholders</a></li>
+        <li><a href="#situacion">Situación Deseada</a></li>
+        <li><a href="#objetivos">Objetivos</a></li>
+        <li><a href="#metodologia">Metodología</a></li>
+        <li><a href="#cronograma">Cronograma</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="main">
+    <!-- RESUMEN EJECUTIVO -->
+    <section id="resumen" class="section">
+      <h2>1. Resumen Ejecutivo</h2>
+      <p>
+        La presente propuesta tiene como objetivo diseñar e implementar una <strong>solución de automatización inteligente</strong> 
+        para el proceso de extracción, validación y consolidación de datos contenidos en archivos PDF hacia formatos Excel estructurados. 
+        El cliente actualmente realiza este proceso de forma manual, lo que consume aproximadamente [X] horas semanales y presenta 
+        una tasa de error del [X]% debido a la transcripción manual.
+      </p>
+      <p>
+        Nuestra propuesta contempla el desarrollo de una <strong>arquitectura modular</strong> que incluye: (1) motor de lectura OCR 
+        para extracción de texto, (2) motor de validación con reglas de negocio configurables, y (3) motor de consolidación 
+        para generación de reportes Excel. La solución será desarrollada utilizando <strong>n8n</strong> para orquestación de workflows, 
+        <strong>Lovable</strong> para prototipado rápido de interfaces, y componentes de código propio en Python/Node.js para 
+        garantizar escalabilidad y mantenibilidad.
+      </p>
+      <p>
+        <strong>Delimitación:</strong> El proyecto se enfocará en los documentos [tipo de PDFs] del área [nombre área], 
+        con una población objetivo de [X] usuarios. No incluirá la integración con sistemas ERP externos ni el procesamiento 
+        de imágenes escaneadas con calidad inferior a 300 DPI.
+      </p>
+      
+      <div class="card">
+        <div class="card-title">🎯 Entregables Principales</div>
+        <ul>
+          <li>Sistema de automatización funcional con tasa de error < 2%</li>
+          <li>Documentación técnica completa (arquitectura, APIs, despliegue)</li>
+          <li>Manual de usuario y capacitación al equipo cliente</li>
+          <li>Informe de pruebas con métricas de precisión y rendimiento</li>
+          <li>Roadmap de evolución futura (fases 2 y 3)</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ESTADO ACTUAL -->
+    <section id="estado" class="section">
+      <h2>2. Estado Actual del Reto</h2>
+      
+      <h3>2.1 Descripción del Proceso Manual</h3>
+      <p>
+        Actualmente, el área [nombre área] recibe aproximadamente <strong>[X] documentos PDF</strong> semanales 
+        que contienen información crítica para [proceso de negocio]. El flujo de trabajo manual consta de las siguientes etapas:
+      </p>
+      <ol>
+        <li><strong>Recepción:</strong> Los archivos PDF llegan vía [correo/carpeta compartida/sistema]</li>
+        <li><strong>Revisión manual:</strong> Un analista abre cada documento y identifica los campos relevantes</li>
+        <li><strong>Transcripción:</strong> Los datos se copian manualmente a plantillas Excel</li>
+        <li><strong>Validación:</strong> Revisión de consistencia y completitud (segunda persona)</li>
+        <li><strong>Consolidación:</strong> Unificación de múltiples archivos en reportes maestros</li>
+      </ol>
+
+      <div class="card">
+        <div class="card-title">📊 Métricas del Proceso Actual (Basado en Design Thinking - Empatía)</div>
+        <div class="table-container">
+          <table>
+            <tr>
+              <th>Indicador</th>
+              <th>Valor Actual</th>
+              <th>Impacto</th>
+            </tr>
+            <tr>
+              <td>Tiempo promedio por documento</td>
+              <td>[X] minutos</td>
+              <td>Alto - Ineficiencia operativa</td>
+            </tr>
+            <tr>
+              <td>Tasa de error documentada</td>
+              <td>[X]%</td>
+              <td>Crítico - Decisiones con datos incorrectos</td>
+            </tr>
+            <tr>
+              <td>Volumen semanal</td>
+              <td>[X] documentos</td>
+              <td>Alto - Carga operativa creciente</td>
+            </tr>
+            <tr>
+              <td>Costo horario del proceso</td>
+              <td>$[X] / semana</td>
+              <td>Medio - Oportunidad de optimización</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <h3>2.2 Metodología de Investigación</h3>
+      <p>
+        Para la caracterización del estado actual, aplicamos las siguientes herramientas de <strong>Design Thinking</strong>:
+      </p>
+      <ul>
+        <li><strong>Entrevistas semiestructuradas:</strong> 3 sesiones con el equipo operativo y 2 con stakeholders clave</li>
+        <li><strong>Observación contextual:</strong> Shadowing de 2 horas durante el proceso de transcripción</li>
+        <li><strong>Análisis de documentos:</strong> Revisión de 50 archivos PDF representativos para identificar patrones</li>
+        <li><strong>Journey Map:</strong> Mapeo del flujo actual identificando pain points (ver Anexo A)</li>
+      </ul>
+
+      <h3>2.3 Pain Points Identificados</h3>
+      <div class="card">
+        <ul>
+          <li><strong>Repetitividad:</strong> Tareas altamente repetitivas generan fatiga y desmotivación</li>
+          <li><strong>Errores humanos:</strong> Transcripción manual genera inconsistencias en datos críticos</li>
+          <li><strong>Tiempos de respuesta:</strong> Proceso batch semanal retrasa toma de decisiones</li>
+          <li><strong>Escalabilidad:</strong> Incremento de volumen requiere contratación de más personal</li>
+          <li><strong>Traceabilidad:</strong> Difícil rastrear el origen de errores en el proceso</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- STAKEHOLDERS -->
+    <section id="stakeholders" class="section">
+      <h2>3. Stakeholders</h2>
+      <p>
+        Los <strong>stakeholders</strong> son todas las personas, grupos o entidades que tienen un interés en el proyecto 
+        o son afectados por sus resultados. Identificarlos permite entender las necesidades, expectativas y posibles 
+        resistencias al cambio, garantizando así una implementación exitosa.
+      </p>
+
+      <h3>3.1 Mapa de Stakeholders</h3>
+      <div class="table-container">
+        <table>
+          <tr>
+            <th>Stakeholder</th>
+            <th>Rol</th>
+            <th>Interés/Poder</th>
+            <th>Expectativa</th>
+          </tr>
+          <tr>
+            <td><strong>Equipo Operativo</strong></td>
+            <td>Usuarios finales del sistema</td>
+            <td>Alto interés / Medio poder</td>
+            <td>Reducción de carga manual, interfaz intuitiva</td>
+          </tr>
+          <tr>
+            <td><strong>Jefe de Área</strong></td>
+            <td>Patrocinador del proyecto</td>
+            <td>Alto interés / Alto poder</td>
+            <td>ROI, reducción de errores, tiempos de entrega</td>
+          </tr>
+          <tr>
+            <td><strong>Área de TI</strong></td>
+            <td>Facilitador técnico</td>
+            <td>Medio interés / Alto poder</td>
+            <td>Seguridad, compatibilidad, mantenibilidad</td>
+          </tr>
+          <tr>
+            <td><strong>Clientes Internos</strong></td>
+            <td>Consumidores de los reportes</td>
+            <td>Alto interés / Bajo poder</td>
+            <td>Datos precisos y oportunos</td>
+          </tr>
+          <tr>
+            <td><strong>Dirección</strong></td>
+            <td>Tomadores de decisión</td>
+            <td>Medio interés / Alto poder</td>
+            <td>Transformación digital, eficiencia operativa</td>
+          </tr>
+        </table>
+      </div>
+
+      <h3>3.2 Estrategia de Gestión</h3>
+      <ul>
+        <li><strong>Equipo Operativo:</strong> Involucramiento desde el prototipo (co-creación), capacitación continua</li>
+        <li><strong>Jefe de Área:</strong> Reportes semanales de avance, demostraciones de valor</li>
+        <li><strong>Área de TI:</strong> Revisiones técnicas tempranas, cumplimiento de estándares corporativos</li>
+      </ul>
+    </section>
+
+    <!-- SITUACIÓN DESEADA -->
+    <section id="situacion" class="section">
+      <h2>4. Situación Deseada y HMW</h2>
+
+      <h3>4.1 Análisis de Afinidad</h3>
+      <p>
+        A partir de la información recolectada, realizamos un <strong>análisis de afinidad</strong> agrupando 
+        insights en categorías temáticas. Los patrones identificados fueron:
+      </p>
+      <ul>
+        <li><strong>Tecnología:</strong> Necesidad de OCR robusto y validaciones automáticas</li>
+        <li><strong>Proceso:</strong> Requerimiento de trazabilidad y auditoría</li>
+        <li><strong>Personas:</strong> Recepción positiva al cambio si reduce tareas repetitivas</li>
+        <li><strong>Datos:</strong> Importancia crítica de la precisión (>98% requerido)</li>
+      </ul>
+
+      <h3>4.2 Situación Deseada</h3>
+      <p>
+        En el estado ideal, el área [nombre área] cuenta con un <strong>sistema automatizado</strong> que:
+      </p>
+      <ul>
+        <li>Procesa documentos PDF en tiempo real con mínima intervención humana</li>
+        <li>Extrae datos con precisión superior al 98% mediante OCR inteligente</li>
+        <li>Valida automáticamente contra reglas de negocio configurables</li>
+        <li>Genera archivos Excel estructurados listos para análisis</li>
+        <li>Proporciona dashboard de monitoreo y alertas de excepciones</li>
+        <li>Mantiene trazabilidad completa de cada documento procesado</li>
+      </ul>
+
+      <div class="hmw-box">
+        <h3>🎯 Pregunta de Diseño (HMW)</h3>
+        <p class="hmw-question">
+          "¿Cómo podríamos automatizar el proceso de extracción de datos PDF→Excel 
+          garantizando una precisión superior al 98%, reduciendo el tiempo de procesamiento 
+          en 80% y manteniendo la trazabilidad completa del proceso?"
+        </p>
+      </div>
+    </section>
+
+    <!-- OBJETIVOS -->
+    <section id="objetivos" class="section">
+      <h2>5. Objetivos, Alcance y Exclusiones</h2>
+
+      <h3>5.1 Objetivo General</h3>
+      <p>
+        <strong>Diseñar e implementar un sistema de automatización inteligente</strong> para la extracción, 
+        validación y consolidación de datos desde archivos PDF hacia Excel, que reduzca los tiempos de 
+        procesamiento en un 80% y alcance una precisión igual o superior al 98%, durante el semestre 
+        académico 2026-10 (4.5 meses).
+      </p>
+
+      <h3>5.2 Objetivos Específicos</h3>
+      <ol>
+        <li>
+          <strong>Diagnosticar</strong> el proceso actual mediante entrevistas, observación y análisis de datos 
+          para identificar oportunidades de mejora y requisitos técnicos (Semanas 1-3)
+        </li>
+        <li>
+          <strong>Diseñar</strong> la arquitectura técnica modular del sistema, definiendo tecnologías, 
+          flujos de datos y reglas de validación (Semanas 4-6)
+        </li>
+        <li>
+          <strong>Desarrollar</strong> un prototipo funcional del motor de extracción OCR y validación básica 
+          con capacidad de procesar [X] documentos tipo (Semanas 7-10)
+        </li>
+        <li>
+          <strong>Validar</strong> el prototipo mediante pruebas de precisión con muestra representativa, 
+          ajustando el modelo según resultados (Semanas 11-13)
+        </li>
+        <li>
+          <strong>Implementar</strong> la solución final con interfaz de usuario, documentación técnica y 
+          capacitación al equipo cliente (Semanas 14-18)
+        </li>
+      </ol>
+
+      <h3>5.3 Alcance de Productos/Entregables</h3>
+      <div class="table-container">
+        <table>
+          <tr>
+            <th>Entregable</th>
+            <th>Descripción</th>
+            <th>Características</th>
+          </tr>
+          <tr>
+            <td>Motor de Lectura OCR</td>
+            <td>Componente de extracción de texto</td>
+            <td>Soporte PDF nativos, reconocimiento de campos estructurados, confianza >95%</td>
+          </tr>
+          <tr>
+            <td>Motor de Validación</td>
+            <td>Reglas de negocio configurables</td>
+            <td>Validación de formatos, rangos, consistencia entre campos</td>
+          </tr>
+          <tr>
+            <td>Motor de Consolidación</td>
+            <td>Generación de Excel</td>
+            <td>Formato estructurado, múltiples hojas, fórmulas integradas</td>
+          </tr>
+          <tr>
+            <td>Dashboard de Monitoreo</td>
+            <td>Interfaz web (Lovable)</td>
+            <td>Vista de procesos, alertas, métricas de precisión</td>
+          </tr>
+          <tr>
+            <td>Documentación Técnica</td>
+            <td>Arquitectura y operación</td>
+            <td>Diagramas, APIs, guía de despliegue, troubleshooting</td>
+          </tr>
+        </table>
+      </div>
+
+      <h3>5.4 Exclusiones</h3>
+      <div class="card">
+        <ul>
+          <li>Procesamiento de imágenes escaneadas con resolución < 300 DPI</li>
+          <li>Integración con sistemas ERP externos (SAP, Oracle, etc.)</li>
+          <li>Reconocimiento de escritura manuscrita</li>
+          <li>Procesamiento en tiempo real (será procesamiento batch con latencia < 5 min)</li>
+          <li>Módulo de machine learning para clasificación automática de documentos (fase futura)</li>
+          <li>Desarrollo de aplicación móvil nativa</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- METODOLOGÍA -->
+    <section id="metodologia" class="section">
+      <h2>6. Metodología</h2>
+
+      <h3>6.1 Enfoque PICE</h3>
+      <p>
+        Seguimos la <strong>metodología PICE</strong> que estructura el desarrollo en tres ciclos (Sprints):
+      </p>
+      <ul>
+        <li><strong>Sprint 1 - Formalización:</strong> Entendimiento del problema, diagnóstico y propuesta</li>
+        <li><strong>Sprint 2 - Prototipo:</strong> Primera versión funcional con validación técnica</li>
+        <li><strong>Sprint 3 - Solución Final:</strong> Implementación completa, documentación y transferencia</li>
+      </ul>
+
+      <h3>6.2 Design Thinking</h3>
+      <p>
+        Incorporamos estrategias de <strong>co-creación con el cliente</strong> mediante Design Thinking:
+      </p>
+      <ul>
+        <li><strong>Empatizar:</strong> Entrevistas y observación contextual (completado)</li>
+        <li><strong>Definir:</strong> Síntesis de insights y HMW (en curso)</li>
+        <li><strong>Idear:</strong> Sesiones de brainstorming técnico con área de TI</li>
+        <li><strong>Prototipar:</strong> Uso de Lovable para interfaces, n8n para flujos</li>
+        <li><strong>Validar:</strong> Pruebas con usuarios finales y ajustes iterativos</li>
+      </ul>
+
+      <h3>6.3 Arquitectura Técnica Propuesta</h3>
+      <div class="architecture-diagram">
+        <div class="arch-layer">
+          <strong>Capa de Presentación</strong><br>
+          <span style="font-size: 0.9rem; color: var(--color-text-light);">
+            Dashboard Web (Lovable) • Panel de configuración • Visualización de métricas
+          </span>
+        </div>
+        <div class="arch-arrow">↓</div>
+        <div class="arch-layer">
+          <strong>Capa de Orquestación (n8n)</strong><br>
+          <span style="font-size: 0.9rem; color: var(--color-text-light);">
+            Workflows de automatización • Triggers • Scheduling • Manejo de errores
+          </span>
+        </div>
+        <div class="arch-arrow">↓</div>
+        <div class="arch-layer">
+          <strong>Capa de Procesamiento</strong><br>
+          <span style="font-size: 0.9rem; color: var(--color-text-light);">
+            Motor OCR (Tesseract/AWS Textract) • Parser de datos • Validadores
+          </span>
+        </div>
+        <div class="arch-arrow">↓</div>
+        <div class="arch-layer">
+          <strong>Capa de Datos</strong><br>
+          <span style="font-size: 0.9rem; color: var(--color-text-light);">
+            PostgreSQL (logs) • S3/Local (archivos) • Excel Output
+          </span>
+        </div>
+      </div>
+
+      <h3>6.4 Stack Tecnológico</h3>
+      <div class="table-container">
+        <table>
+          <tr>
+            <th>Componente</th>
+            <th>Tecnología</th>
+            <th>Justificación</th>
+          </tr>
+          <tr>
+            <td>Workflow Automation</td>
+            <td>n8n</td>
+            <td>Open source, self-hosted, integraciones nativas</td>
+          </tr>
+          <tr>
+            <td>Prototipado UI</td>
+            <td>Lovable</td>
+            <td>Rapidez, iteración con cliente, exportación clean</td>
+          </tr>
+          <tr>
+            <td>OCR Engine</td>
+            <td>Tesseract / AWS Textract</td>
+            <td>Precisión, soporte español, escalabilidad</td>
+          </tr>
+          <tr>
+            <td>Backend</td>
+            <td>Python (FastAPI) + Node.js</td>
+            <td>Performance, ecosistema ML, flexibilidad</td>
+          </tr>
+          <tr>
+            <td>Base de Datos</td>
+            <td>PostgreSQL</td>
+            <td>ACID, JSON support, logging de auditoría</td>
+          </tr>
+          <tr>
+            <td>Control de Versiones</td>
+            <td>Git + GitHub</td>
+            <td>Colaboración, CI/CD, documentación</td>
+          </tr>
+          <tr>
+            <td>Containerización</td>
+            <td>Docker</td>
+            <td>Portabilidad, ambientes consistentes</td>
+          </tr>
+        </table>
+      </div>
+
+      <h3>6.5 Ambientes de Desarrollo</h3>
+      <ul>
+        <li><strong>Desarrollo (Local):</strong> Docker Compose, datos de prueba, hot reload</li>
+        <li><strong>Pruebas (Staging):</strong> Servidor cloud (AWS/Heroku), datos anonimizados reales</li>
+        <li><strong>Producción:</strong> Infraestructura cliente o cloud privado, acceso restringido</li>
+      </ul>
+
+      <h3>6.6 Consideraciones de Seguridad</h3>
+      <div class="card">
+        <ul>
+          <li>Encriptación en tránsito (HTTPS/TLS) y en reposo (AES-256)</li>
+          <li>Autenticación OAuth 2.0 / SSO corporativo</li>
+          <li>Logs de auditoría inmutables (quién, qué, cuándo)</li>
+          <li>Anonimización de datos sensibles en ambientes de prueba</li>
+          <li>Política de retención y eliminación segura de documentos</li>
+          <li>Cumplimiento con políticas de datos de la organización</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CRONOGRAMA -->
+    <section id="cronograma" class="section">
+      <h2>7. Cronograma del Proyecto</h2>
+
+      <h3>7.1 Roadmap Visual</h3>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-date">Semanas 1-3 (Sprint 1)</div>
+          <div class="timeline-title">Fase de Diagnóstico y Formalización</div>
+          <p>Entrevistas, análisis de documentos, definición de requisitos, arquitectura inicial</p>
+          <span class="tag">Entrega: Propuesta aprobada</span>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">Semanas 4-6</div>
+          <div class="timeline-title">Diseño Técnico Detallado</div>
+          <p>Arquitectura modular, selección de OCR, definición de reglas de validación, setup de ambientes</p>
+          <span class="tag">Entrega: Documento de arquitectura</span>
+          <span class="tag tag-highlight">Semana 6 - YA COMPLETADA</span>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">Semanas 7-10 (Sprint 2)</div>
+          <div class="timeline-title">Desarrollo del Prototipo</div>
+          <p>Motor OCR básico, primer workflow n8n, validaciones simples, dashboard inicial</p>
+          <span class="tag">Entrega: Prototipo funcional v0.1</span>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">Semanas 11-13</div>
+          <div class="timeline-title">Pruebas y Validación</div>
+          <p>Testing con muestra real, medición de % error, ajustes de OCR, refinamiento de reglas</p>
+          <span class="tag tag-highlight">Semana 12 - Pruebas de precisión</span>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">Semanas 14-17 (Sprint 3)</div>
+          <div class="timeline-title">Implementación Final</div>
+          <p>Consolidación completa, interfaz final, documentación, pruebas de usuario</p>
+          <span class="tag">Entrega: Solución final</span>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">Semana 18</div>
+          <div class="timeline-title">Capacitación y Cierre</div>
+          <p>Training al equipo, manual de usuario, transferencia de conocimiento, roadmap evolutivo</p>
+          <span class="tag">Entrega: Cierre de proyecto</span>
+        </div>
+      </div>
+
+      <h3>7.2 Hitos Clave con el Cliente</h3>
+      <div class="table-container">
+        <table>
+          <tr>
+            <th>Fecha</th>
+            <th>Actividad</th>
+            <th>Participantes</th>
+            <th>Entregable</th>
+          </tr>
+          <tr>
+            <td>Semana 2</td>
+            <td>Sesión de entendimiento</td>
+            <td>Equipo + Cliente + Manager</td>
+            <td>Acta de requisitos</td>
+          </tr>
+          <tr>
+            <td>Semana 6</td>
+            <td>Aprobación de propuesta</td>
+            <td>Todos</td>
+            <td>Propuesta firmada</td>
+          </tr>
+          <tr>
+            <td>Semana 10</td>
+            <td>Demo prototipo</td>
+            <td>Equipo + Cliente</td>
+            <td>Feedback v0.1</td>
+          </tr>
+          <tr>
+            <td>Semana 13</td>
+            <td>Validación de precisión</td>
+            <td>Equipo + Cliente</td>
+            <td>Reporte de testing</td>
+          </tr>
+          <tr>
+            <td>Semana 17</td>
+            <td>Entrega final</td>
+            <td>Todos</td>
+            <td>Solución + documentación</td>
+          </tr>
+        </table>
+      </div>
+
+      <h3>7.3 Avance Actual (Semana 6)</h3>
+      <div class="card">
+        <div class="card-title">✅ Completado</div>
+        <ul>
+          <li>Entrevistas con equipo operativo y stakeholders clave</li>
+          <li>Análisis de muestra representativa de documentos PDF</li>
+          <li>Definición de arquitectura técnica modular</li>
+          <li>Setup de ambiente de desarrollo local con Docker</li>
+          <li>Primeras pruebas de OCR con Tesseract</li>
+          <li>Workflow inicial en n8n para procesamiento básico</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">🔄 En Progreso</div>
+        <ul>
+          <li>Refinamiento de prompts de extracción OCR</li>
+          <li>Definición de reglas de validación con área de negocio</li>
+          <li>Preparación de ambiente de pruebas (staging)</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">📋 Próximos Pasos (Semana 7)</div>
+        <ul>
+          <li>Ejecutar pruebas piloto con 50 documentos reales</li>
+          <li>Medir tasa de error base del sistema actual vs automatizado</li>
+          <li>Iterar sobre motor de validación según resultados</li>
+          <li>Desarrollar dashboard de monitoreo en Lovable</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- REFERENCIAS -->
+    <section class="section">
+      <h2>Referencias</h2>
+      <p style="font-size: 0.9rem; line-height: 1.8;">
+        [1] n8n. (2024). <em>Workflow Automation Platform</em>. Recuperado de https://n8n.io<br>
+        [2] Lovable. (2024). <em>AI-powered app development</em>. Recuperado de https://lovable.dev<br>
+        [3] Google. (2024). <em>Tesseract OCR Documentation</em>. Recuperado de https://github.com/tesseract-ocr<br>
+        [4] Amazon Web Services. (2024). <em>Amazon Textract Developer Guide</em>. Recuperado de https://docs.aws.amazon.com/textract<br>
+        [5] IDEO.org. (2015). <em>The Field Guide to Human-Centered Design</em>. IDEO.<br>
+        [6] Universidad de los Andes. (2026). <em>Guía PICE 2026-10: Metodología de Consultoría Empresarial</em>. Uniandes.
+      </p>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>
+      <strong>Propuesta de Trabajo - PICE 2026-10</strong><br>
+      Universidad de los Andes | Escuela de Ingeniería Industrial<br>
+      Documento generado para aprobación del cliente y manager
+    </p>
+  </footer>
+
+</body>
+</html>
