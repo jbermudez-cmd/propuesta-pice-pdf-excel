@@ -17,8 +17,9 @@
       <div class="header-subtitle">Automatización del Proceso de Extracción y Consolidación de Datos PDF a Excel</div>
       <div class="header-meta">
         <strong>Universidad de los Andes - 2026-10</strong><br>
-        Cliente: [Nombre de la Empresa] | Equipo Consultor: [Integrantes]<br>
-        Manager: [Nombre Manager] | Consultor Asociado: [Nombre Monitor]
+        Cliente: Renobo | Equipo Consultor: [Integrantes]<br>
+        Manager: [Nombre Manager] | Consultor Asociado: [Nombre Monitor]<br>
+        <em>Workflow n8n activo en producción | Semana 6 de 18</em>
       </div>
     </div>
   </header>
@@ -101,23 +102,23 @@
             </tr>
             <tr>
               <td>Tiempo promedio por documento</td>
-              <td>[X] minutos</td>
+              <td>15-20 minutos (manual)</td>
               <td>Alto - Ineficiencia operativa</td>
             </tr>
             <tr>
               <td>Tasa de error documentada</td>
-              <td>[X]%</td>
+              <td>5-8% (transcripción manual)</td>
               <td>Crítico - Decisiones con datos incorrectos</td>
             </tr>
             <tr>
-              <td>Volumen semanal</td>
-              <td>[X] documentos</td>
+              <td>Volumen mensual</td>
+              <td>50-100 extractos fiduciarios</td>
               <td>Alto - Carga operativa creciente</td>
             </tr>
             <tr>
-              <td>Costo horario del proceso</td>
-              <td>$[X] / semana</td>
-              <td>Medio - Oportunidad de optimización</td>
+              <td>Formato de salida requerido</td>
+              <td>CB-0008 (estructura específica)</td>
+              <td>Crítico - Cumplimiento normativo</td>
             </tr>
           </table>
         </div>
@@ -355,79 +356,101 @@
         <li><strong>Validar:</strong> Pruebas con usuarios finales y ajustes iterativos</li>
       </ul>
 
-      <h3>6.3 Arquitectura Técnica Propuesta</h3>
+      <h3>6.3 Arquitectura Técnica Implementada</h3>
       <div class="architecture-diagram">
         <div class="arch-layer">
-          <strong>Capa de Presentación</strong><br>
+          <strong>Frontend - Dashboard (Lovable)</strong><br>
           <span style="font-size: 0.9rem; color: var(--color-text-light);">
-            Dashboard Web (Lovable) • Panel de configuración • Visualización de métricas
+            Panel de monitoreo • Visualización de métricas • Configuración de parámetros
           </span>
         </div>
         <div class="arch-arrow">↓</div>
         <div class="arch-layer">
           <strong>Capa de Orquestación (n8n)</strong><br>
           <span style="font-size: 0.9rem; color: var(--color-text-light);">
-            Workflows de automatización • Triggers • Scheduling • Manejo de errores
+            Webhook seguro (HMAC-SHA256) • Workflows de procesamiento • Manejo de errores • Notificaciones Gmail
           </span>
         </div>
         <div class="arch-arrow">↓</div>
         <div class="arch-layer">
-          <strong>Capa de Procesamiento</strong><br>
+          <strong>Motor OCR Dual + Validación</strong><br>
           <span style="font-size: 0.9rem; color: var(--color-text-light);">
-            Motor OCR (Tesseract/AWS Textract) • Parser de datos • Validadores
+            OCR Tesseract (texto plano) + Gemini 2.5 Pro (análisis visual) → "Juez de datos" (Gemini 2.5 Flash) consolida y valida
           </span>
         </div>
         <div class="arch-arrow">↓</div>
         <div class="arch-layer">
-          <strong>Capa de Datos</strong><br>
+          <strong>Generación Excel CB-0008</strong><br>
           <span style="font-size: 0.9rem; color: var(--color-text-light);">
-            PostgreSQL (logs) • S3/Local (archivos) • Excel Output
+            Código Node.js • Formato exacto CB-0008 • Catálogos validados • Estilos y colores corporativos
+          </span>
+        </div>
+        <div class="arch-arrow">↓</div>
+        <div class="arch-layer">
+          <strong>Integraciones</strong><br>
+          <span style="font-size: 0.9rem; color: var(--color-text-light);">
+            Google Drive (lectura/escritura) • Google Sheets (mapeo de fiduciarias) • Email notifications
           </span>
         </div>
       </div>
 
-      <h3>6.4 Stack Tecnológico</h3>
+      <h3>6.4 Stack Tecnológico Implementado</h3>
       <div class="table-container">
         <table>
           <tr>
             <th>Componente</th>
             <th>Tecnología</th>
-            <th>Justificación</th>
+            <th>Estado</th>
           </tr>
           <tr>
             <td>Workflow Automation</td>
-            <td>n8n</td>
-            <td>Open source, self-hosted, integraciones nativas</td>
+            <td>n8n (Cloud)</td>
+            <td>✅ Producción - Procesamiento activo</td>
           </tr>
           <tr>
             <td>Prototipado UI</td>
             <td>Lovable</td>
-            <td>Rapidez, iteración con cliente, exportación clean</td>
+            <td>🔄 En desarrollo - Dashboard de monitoreo</td>
           </tr>
           <tr>
-            <td>OCR Engine</td>
-            <td>Tesseract / AWS Textract</td>
-            <td>Precisión, soporte español, escalabilidad</td>
+            <td>OCR Engine - Texto</td>
+            <td>Tesseract OCR</td>
+            <td>✅ Implementado - Extracción de texto plano</td>
           </tr>
           <tr>
-            <td>Backend</td>
-            <td>Python (FastAPI) + Node.js</td>
-            <td>Performance, ecosistema ML, flexibilidad</td>
+            <td>OCR Engine - Visual</td>
+            <td>Google Gemini 2.5 Pro</td>
+            <td>✅ Implementado - Análisis de documentos</td>
           </tr>
           <tr>
-            <td>Base de Datos</td>
-            <td>PostgreSQL</td>
-            <td>ACID, JSON support, logging de auditoría</td>
+            <td>Validación de Datos</td>
+            <td>Google Gemini 2.5 Flash</td>
+            <td>✅ Implementado - "Juez de datos" con prueba matemática</td>
           </tr>
           <tr>
-            <td>Control de Versiones</td>
-            <td>Git + GitHub</td>
-            <td>Colaboración, CI/CD, documentación</td>
+            <td>Generación Excel</td>
+            <td>Node.js (código nativo)</td>
+            <td>✅ Implementado - Formato CB-0008 exacto</td>
           </tr>
           <tr>
-            <td>Containerización</td>
-            <td>Docker</td>
-            <td>Portabilidad, ambientes consistentes</td>
+            <td>Integración Archivos</td>
+            <td>Google Drive API</td>
+            <td>✅ Implementado - Lectura/escritura automática</td>
+          </tr>
+          <tr>
+            <td>Mapeo Fiduciarias</td>
+            <td>Google Sheets</td>
+            <td>✅ Implementado - Tablas de referencia dinámicas</td>
+          </tr>
+          <tr>
+            <td>Notificaciones</td>
+            <td>Gmail API</td>
+            <td>✅ Implementado - Envío de archivos procesados</td>
+          </tr>
+          <tr>
+            <td>Seguridad</td>
+            <td>HMAC-SHA256</td>
+            <td>✅ Implementado - Autenticación de webhooks</td>
           </tr>
         </table>
       </div>
@@ -456,49 +479,66 @@
     <section id="cronograma" class="section">
       <h2>7. Cronograma del Proyecto</h2>
 
-      <h3>7.1 Roadmap Visual</h3>
+      <h3>7.1 Roadmap Visual - Actualizado</h3>
       <div class="timeline">
         <div class="timeline-item">
           <div class="timeline-date">Semanas 1-3 (Sprint 1)</div>
           <div class="timeline-title">Fase de Diagnóstico y Formalización</div>
           <p>Entrevistas, análisis de documentos, definición de requisitos, arquitectura inicial</p>
-          <span class="tag">Entrega: Propuesta aprobada</span>
+          <span class="tag">✅ Completado</span>
         </div>
 
         <div class="timeline-item">
           <div class="timeline-date">Semanas 4-6</div>
-          <div class="timeline-title">Diseño Técnico Detallado</div>
-          <p>Arquitectura modular, selección de OCR, definición de reglas de validación, setup de ambientes</p>
-          <span class="tag">Entrega: Documento de arquitectura</span>
-          <span class="tag tag-highlight">Semana 6 - YA COMPLETADA</span>
+          <div class="timeline-title">Diseño Técnico y Desarrollo Inicial</div>
+          <p>Arquitectura modular en n8n, integración OCR (Gemini + Tesseract), generación Excel CB-0008</p>
+          <span class="tag">✅ Completado</span>
+          <span class="tag tag-highlight">Workflow funcional en producción</span>
         </div>
 
         <div class="timeline-item">
-          <div class="timeline-date">Semanas 7-10 (Sprint 2)</div>
-          <div class="timeline-title">Desarrollo del Prototipo</div>
-          <p>Motor OCR básico, primer workflow n8n, validaciones simples, dashboard inicial</p>
-          <span class="tag">Entrega: Prototipo funcional v0.1</span>
+          <div class="timeline-date">Semana 7 (Sprint 2)</div>
+          <div class="timeline-title">Pruebas de Error y Validación</div>
+          <p>Testing con muestra real de extractos fiduciarios, medición de tasa de error, ajustes OCR</p>
+          <span class="tag">🔄 En progreso</span>
+          <span class="tag tag-highlight">Febrero: Testing de colas</span>
         </div>
 
         <div class="timeline-item">
-          <div class="timeline-date">Semanas 11-13</div>
-          <div class="timeline-title">Pruebas y Validación</div>
-          <p>Testing con muestra real, medición de % error, ajustes de OCR, refinamiento de reglas</p>
-          <span class="tag tag-highlight">Semana 12 - Pruebas de precisión</span>
+          <div class="timeline-date">Semanas 8-9</div>
+          <div class="timeline-title">Correcciones y Afinamiento</div>
+          <p>Ajustes basados en resultados de pruebas, optimización de prompts Gemini, validaciones</p>
+          <span class="tag">📅 Programado</span>
         </div>
 
         <div class="timeline-item">
-          <div class="timeline-date">Semanas 14-17 (Sprint 3)</div>
-          <div class="timeline-title">Implementación Final</div>
-          <p>Consolidación completa, interfaz final, documentación, pruebas de usuario</p>
-          <span class="tag">Entrega: Solución final</span>
+          <div class="timeline-date">Semana 10</div>
+          <div class="timeline-title">Desarrollo Frontend (Lovable)</div>
+          <p>Interfaz web para monitoreo, dashboard de métricas, panel de configuración</p>
+          <span class="tag">📅 En desarrollo</span>
+          <span class="tag">Entrega: Prototipo v1.0</span>
         </div>
 
         <div class="timeline-item">
-          <div class="timeline-date">Semana 18</div>
-          <div class="timeline-title">Capacitación y Cierre</div>
-          <p>Training al equipo, manual de usuario, transferencia de conocimiento, roadmap evolutivo</p>
-          <span class="tag">Entrega: Cierre de proyecto</span>
+          <div class="timeline-date">Semana 11 (Sprint 3)</div>
+          <div class="timeline-title">Entrega Versión Funcional</div>
+          <p>Sistema completo: n8n + Frontend + Excel CB-0008 automatizado, documentación</p>
+          <span class="tag">🎯 Meta clave</span>
+          <span class="tag tag-highlight">Demo con cliente</span>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">Semanas 12-14</div>
+          <div class="timeline-title">Mejoras Adicionales (Si aplica)</div>
+          <p>Features extra si el tiempo lo permite: más validaciones, reportes adicionales, integraciones</p>
+          <span class="tag">💡 Opcional</span>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">Semanas 15-18</div>
+          <div class="timeline-title">Documentación y Cierre</div>
+          <p>Manual técnico, capacitación al equipo Renobo, transferencia de conocimiento</p>
+          <span class="tag">📅 Programado</span>
         </div>
       </div>
 
@@ -544,35 +584,37 @@
         </table>
       </div>
 
-      <h3>7.3 Avance Actual (Semana 6)</h3>
+      <h3>7.3 Avance Actual (Semana 6 - Actualizado)</h3>
       <div class="card">
-        <div class="card-title">✅ Completado</div>
+        <div class="card-title">✅ Completado - Sistema Funcional</div>
         <ul>
-          <li>Entrevistas con equipo operativo y stakeholders clave</li>
-          <li>Análisis de muestra representativa de documentos PDF</li>
-          <li>Definición de arquitectura técnica modular</li>
-          <li>Setup de ambiente de desarrollo local con Docker</li>
-          <li>Primeras pruebas de OCR con Tesseract</li>
-          <li>Workflow inicial en n8n para procesamiento básico</li>
+          <li><strong>Workflow n8n en producción:</strong> Procesamiento completo PDF → Excel CB-0008</li>
+          <li><strong>Motor OCR dual:</strong> Extracción con Tesseract + Análisis visual con Gemini 2.5 Pro</li>
+          <li><strong>Sistema de validación:</strong> "Juez de datos" con Gemini 2.5 Flash que audita y consolida</li>
+          <li><strong>Generación Excel:</strong> Formato CB-0008 con validaciones, catálogos y estilos</li>
+          <li><strong>Integración Google Drive:</strong> Lectura automática de carpetas y hojas de cálculo</li>
+          <li><strong>Webhook seguro:</strong> Autenticación HMAC-SHA256 para recepción de archivos</li>
+          <li><strong>Aprobación del monitor:</strong> Revisión técnica exitosa (solo dudas menores sobre datos)</li>
         </ul>
       </div>
 
       <div class="card">
         <div class="card-title">🔄 En Progreso</div>
         <ul>
-          <li>Refinamiento de prompts de extracción OCR</li>
-          <li>Definición de reglas de validación con área de negocio</li>
-          <li>Preparación de ambiente de pruebas (staging)</li>
+          <li><strong>Pruebas de error:</strong> Testing con colas de documentos reales (febrero)</li>
+          <li><strong>Frontend (Lovable):</strong> Dashboard de monitoreo en desarrollo</li>
+          <li><strong>Presentación:</strong> Slides de venta del proyecto (Clara + Costa)</li>
+          <li><strong>Datos pendientes:</strong> Información faltante de Renobo para completar flujo</li>
         </ul>
       </div>
 
       <div class="card">
-        <div class="card-title">📋 Próximos Pasos (Semana 7)</div>
+        <div class="card-title">📋 Próximos Pasos</div>
         <ul>
-          <li>Ejecutar pruebas piloto con 50 documentos reales</li>
-          <li>Medir tasa de error base del sistema actual vs automatizado</li>
-          <li>Iterar sobre motor de validación según resultados</li>
-          <li>Desarrollar dashboard de monitoreo en Lovable</li>
+          <li><strong>Semana 7:</strong> Testing de error con muestra representativa</li>
+          <li><strong>Semanas 8-9:</strong> Correcciones basadas en resultados</li>
+          <li><strong>Semana 10:</strong> Completar frontend y presentación</li>
+          <li><strong>Semana 11:</strong> Entrega versión funcional al cliente</li>
         </ul>
       </div>
     </section>
